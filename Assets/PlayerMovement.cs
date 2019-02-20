@@ -21,7 +21,9 @@ public class PlayerMovement : MonoBehaviour {
         hor = Input.GetAxis("Horizontal");
         ver = Input.GetAxis("Vertical");
 
-        Vector3 force = new Vector3(ver * mult, 0, -hor * mult);
-        player.AddTorque(force);
-	}
+        Vector3 force = new Vector3(ver * mult, 0, ver * mult);
+        Vector3 turnforce = new Vector3(0, hor * mult, 0);
+        player.AddRelativeTorque(force);
+        player.AddTorque(turnforce);
+    }
 }
